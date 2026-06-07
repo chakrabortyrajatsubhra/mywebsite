@@ -142,21 +142,18 @@
   /* ---------- TABS ---------- */
   section.tabs-section{padding:54px 0 90px}
   .tabnav{
-    display:flex;flex-wrap:wrap;gap:4px;border-bottom:1px solid var(--line);
+    display:flex;flex-wrap:wrap;gap:8px;
     margin-bottom:46px;position:sticky;top:62px;z-index:20;
-    background:rgba(255,255,255,.85);backdrop-filter:blur(8px);
+    background:rgba(255,255,255,.9);backdrop-filter:blur(8px);padding:14px 0;
   }
   .tabnav button{
-    font-family:var(--mono);font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;
-    background:none;border:none;color:var(--muted);cursor:pointer;
-    padding:16px 18px;position:relative;transition:color .2s;
+    font-family:var(--mono);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;
+    background:var(--surface-2);border:1px solid var(--line-strong);color:var(--muted);cursor:pointer;
+    padding:11px 18px;border-radius:4px;transition:all .2s;
   }
-  .tabnav button:hover{color:var(--text)}
-  .tabnav button.active{color:var(--accent)}
-  .tabnav button.active::after{
-    content:"";position:absolute;left:14px;right:14px;bottom:-1px;height:2px;background:var(--accent);
-  }
-  @media(max-width:680px){.tabnav button{padding:13px 12px;font-size:11px}}
+  .tabnav button:hover{border-color:var(--accent-line);color:var(--accent);background:var(--accent-soft)}
+  .tabnav button.active{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media(max-width:680px){.tabnav button{padding:10px 13px;font-size:11px}}
 
   .pane{display:none;animation:fade .5s ease}
   .pane.active{display:block}
@@ -197,6 +194,8 @@
   .pub .oral{font-family:var(--mono);font-size:11px;letter-spacing:.5px;color:#fff;background:var(--accent);padding:4px 9px;border-radius:3px;font-weight:700}
   .pub a.lnk{font-family:var(--mono);font-size:12px;color:var(--muted);text-decoration:none;border-bottom:1px solid var(--line-strong);transition:all .2s}
   .pub a.lnk:hover{color:var(--accent);border-color:var(--accent-line)}
+  .pub .ptags{display:flex;flex-wrap:wrap;gap:7px;margin-top:5px}
+  .pub .ptag{font-family:var(--mono);font-size:10.5px;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:3px 9px;border-radius:20px;background:#fff}
 
   /* news list */
   .news-item{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:16px 0;border-top:1px solid var(--line)}
@@ -361,7 +360,8 @@
     <!-- RESEARCH -->
     <div class="pane active" id="research">
       <div class="block">
-        <p class="lead-text">My current research sits at the intersection of <span class="hl">interpretability, fairness, and bias</span> in generative vision. I work on discovering and mitigating social biases in text-to-image diffusion models, causal structure in image editing, and open-vocabulary segmentation in flow-based generative models — alongside multilingual robustness in vision-language models.</p>
+        <p class="lead-text">I'm interested in <span class="hl">why</span> generative vision models encode social bias, not just whether they do. In text-to-image diffusion, demographic attributes like gender or race become entangled with ostensibly neutral concepts — a profession, an object, a setting — so that nudging one quietly drags the other along. I treat this <span class="hl">concept entanglement</span> as the real object of study: locating where it lives inside a model's cross-attention, measuring it spatially rather than only at the output, and understanding how it forms over the course of generation.</p>
+        <p class="lead-text">From there the question becomes how to intervene without breaking the model. Instead of retraining on curated data, I look for lightweight, interpretable handles — steering the denoising trajectory, disentangling overlapping concepts, and using <span class="hl">causal reasoning</span> to separate what a model should attend to from the spurious correlations it has absorbed. The throughline across diffusion models, flow-based segmentation, and multilingual vision-language systems is the same: make a model's internal decisions legible, then make them fairer.</p>
         <div class="tags">
           <span class="tag">Computer Vision</span>
           <span class="tag">Fairness in AI</span>
@@ -457,16 +457,19 @@
         <div class="ptitle">Vision-Language Models are Fragile Multilingual Associators</div>
         <div class="pauth">Ritabrata Chakraborty, <u>Rajatsubhra Chakraborty</u>, Shivakumara Palaiahnakote, Angelo Cangelosi, Umapada Pal</div>
         <div class="pmeta"><span class="oral">New Preprint</span><span class="venue">M²BIND · 2026</span><a class="lnk" href="https://ritabrata04.github.io/m2bind/" target="_blank" rel="noopener">Website ↗</a></div>
+        <div class="ptags"><span class="ptag">Vision-Language Models</span><span class="ptag">Multilingual</span><span class="ptag">Interpretability</span></div>
       </div>
       <div class="pub">
         <div class="ptitle">BiasMap: Leveraging Cross-Attentions to Discover and Mitigate Hidden Social Biases in Text-to-Image Generation</div>
         <div class="pauth"><u>Rajatsubhra Chakraborty</u>, Xujun Che, Depeng Xu, Cori Faklaris, Xi Niu, Shuhan Yuan</div>
         <div class="pmeta"><span class="venue">ACM SIGKDD (KDD) 2026</span><a class="lnk" href="https://arxiv.org/abs/2509.13496" target="_blank" rel="noopener">Paper ↗</a><a class="lnk" href="https://chakrabortyrajatsubhra.github.io/biasmap/" target="_blank" rel="noopener">Website ↗</a></div>
+        <div class="ptags"><span class="ptag">Fairness</span><span class="ptag">Interpretability</span><span class="ptag">Text-to-Image</span><span class="ptag">Bias Mitigation</span></div>
       </div>
       <div class="pub">
         <div class="ptitle">DM-QPMNet: Dual-modality Fusion Network for Cell Segmentation in Quantitative Phase Microscopy</div>
         <div class="pauth"><u>Rajatsubhra Chakraborty</u>, Ana Espinosa-Momox, Riley Haskin, Depeng Xu, Rosario Porras-Aguilar</div>
         <div class="pmeta"><span class="venue">IEEE ICIP 2026</span><a class="lnk" href="https://arxiv.org/abs/2511.00218" target="_blank" rel="noopener">Paper ↗</a></div>
+        <div class="ptags"><span class="ptag">Medical Imaging</span><span class="ptag">Segmentation</span><span class="ptag">Quantitative Phase Microscopy</span></div>
       </div>
 
       <div class="pub-year">2025</div>
@@ -474,11 +477,13 @@
         <div class="ptitle">LLAVIDAL: A Large Language Vision Model for Daily Activities of Living</div>
         <div class="pauth">Dominick Reilly, <u>Rajatsubhra Chakraborty</u>, Arkaprava Sinha, Manish Kumar Govind, Pu Wang, Francois Bremond, Le Xue, Srijan Das</div>
         <div class="pmeta"><span class="venue">IEEE/CVF CVPR 2025</span><a class="lnk" href="https://arxiv.org/abs/2406.09390" target="_blank" rel="noopener">Paper ↗</a><a class="lnk" href="https://adl-x.github.io/" target="_blank" rel="noopener">Website ↗</a></div>
+        <div class="ptags"><span class="ptag">Vision-Language Models</span><span class="ptag">Video Understanding</span><span class="ptag">Multimodal</span></div>
       </div>
       <div class="pub">
         <div class="ptitle">Do We Need Large VLMs for Spotting Soccer Actions?</div>
         <div class="pauth">Ritabrata Chakraborty, <u>Rajatsubhra Chakraborty</u>, Avijit Dasgupta, Sandeep Chaurasia</div>
         <div class="pmeta"><span class="venue">IJCNLP-AACL SRW 2025</span><span class="oral">Oral</span><a class="lnk" href="https://aclanthology.org/2025.ijcnlp-srw.6/" target="_blank" rel="noopener">Paper ↗</a></div>
+        <div class="ptags"><span class="ptag">Vision-Language Models</span><span class="ptag">Video</span><span class="ptag">Efficiency</span></div>
       </div>
 
       <div class="pub-year">2024</div>
@@ -486,6 +491,7 @@
         <div class="ptitle">Multiview Aerial Visual Recognition (MAVREC): Can Multi-view Improve Aerial Visual Perception?</div>
         <div class="pauth">Aritra Dutta, Srijan Das, Jacob Nielsen, <u>Rajatsubhra Chakraborty</u>, Mubarak Shah</div>
         <div class="pmeta"><span class="venue">IEEE/CVF CVPR 2024</span><a class="lnk" href="https://arxiv.org/abs/2312.04548" target="_blank" rel="noopener">Paper ↗</a><a class="lnk" href="https://mavrec.github.io/" target="_blank" rel="noopener">Website ↗</a></div>
+        <div class="ptags"><span class="ptag">Object Detection</span><span class="ptag">Aerial / UAV</span><span class="ptag">Multi-view</span></div>
       </div>
     </div>
 
@@ -500,7 +506,6 @@
 
     <!-- NEWS -->
     <div class="pane" id="news">
-      <p class="lead-text">The full running log — newest first.</p>
       <div class="news-item"><div class="ic">📄</div><p>New preprint out — <a href="https://ritabrata04.github.io/m2bind/" target="_blank" rel="noopener"><strong>Vision-Language Models are Fragile Multilingual Associators (M²BIND)</strong></a>, with Ritabrata Chakraborty, Shivakumara Palaiahnakote, Angelo Cangelosi, and Umapada Pal. Project site is live!</p></div>
       <div class="news-item"><div class="ic">🎉</div><p>Yaay! I have passed my <strong>Qualifier Examination!</strong></p></div>
       <div class="news-item"><div class="ic">🥳</div><p><strong>DM-QPMNet</strong> has been accepted to the <strong>IEEE International Conference on Image Processing (ICIP) 2026</strong>! See you all in Tampere, Finland! 🇫🇮</p></div>
@@ -521,6 +526,7 @@
       <div class="block">
         <div class="block-h">Reviewer &amp; Program Committee</div>
         <ul class="slist">
+          <li>Program Committee — PAKDD 2026</li>
           <li>Annual Meeting of the Association for Computational Linguistics (ACL) 2026</li>
           <li>IEEE International Conference on Image Processing (ICIP) 2026</li>
           <li>Conference on Empirical Methods in Natural Language Processing (EMNLP) 2025</li>
