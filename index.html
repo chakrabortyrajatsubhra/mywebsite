@@ -295,6 +295,40 @@
   .lb-next{right:24px;top:50%;transform:translateY(-50%)}
   @media(max-width:600px){.lb-prev{left:10px}.lb-next{right:10px}.lb-btn{width:40px;height:40px}}
 
+  /* ---------- WALKING CAT + FOOTBALL ---------- */
+  .walker{
+    position:fixed;bottom:0;left:0;z-index:6;pointer-events:none;
+    height:58px;opacity:.9;will-change:transform;
+    animation:stroll 26s linear infinite;
+  }
+  .walker svg{display:block;overflow:visible}
+  .walker .ball{position:absolute;bottom:2px;left:98px}
+  .walker .cat{position:absolute;bottom:0;left:0}
+  .cat .leg{transform-box:fill-box;transform-origin:50% 6%}
+  .cat .legA{animation:step 0.38s ease-in-out infinite}
+  .cat .legB{animation:step 0.38s ease-in-out infinite;animation-delay:0.19s}
+  .cat .tail{transform-box:fill-box;transform-origin:100% 100%;animation:tail 1.6s ease-in-out infinite alternate}
+  .ball svg{animation:roll 0.9s linear infinite}
+  @keyframes stroll{
+    0%{transform:translateX(-170px)}
+    100%{transform:translateX(calc(100vw + 170px))}
+  }
+  @keyframes step{0%{transform:rotate(16deg)}50%{transform:rotate(-16deg)}100%{transform:rotate(16deg)}}
+  @keyframes tail{0%{transform:rotate(-12deg)}100%{transform:rotate(14deg)}}
+  @keyframes roll{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  @media(prefers-reduced-motion:reduce){.walker{display:none}}
+
+  /* ---------- UNC LOGO IN FOOTER ---------- */
+  .unc{margin:22px 0 4px;display:flex;justify-content:center;align-items:center}
+  .unc img{height:54px;width:auto;opacity:.9;transition:opacity .2s}
+  .unc img:hover{opacity:1}
+  .unc-text{
+    display:none;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:13px;letter-spacing:2px;text-transform:uppercase;
+    color:var(--accent);border:1px solid var(--accent-line);border-radius:4px;padding:9px 16px;
+  }
+  .unc-text b{font-weight:700}
+
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 </style>
@@ -620,6 +654,10 @@
 <footer>
   <div class="wrap">
     <div class="office"><span class="pin">📍</span> Woodward Hall, 3rd Floor RM 331 · UNC Charlotte, North Carolina</div>
+    <div class="unc">
+      <img src="assets/unc-charlotte.png" alt="UNC Charlotte" onerror="this.style.display='none';this.nextElementSibling.style.display='inline-flex'">
+      <span class="unc-text"><b>UNC</b> Charlotte</span>
+    </div>
     <div class="copy">Reading Absolute Batman · hunting the best ramen in Charlotte · always open to a FIFA match.</div>
   </div>
 </footer>
@@ -682,6 +720,29 @@
     });
   })();
 </script>
+
+<div class="walker" aria-hidden="true">
+  <div class="ball">
+    <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="11" fill="#ffffff" stroke="#1a1611" stroke-width="1.4"/>
+      <polygon points="12,6.6 15.6,9.3 14.2,13.6 9.8,13.6 8.4,9.3" fill="#1a1611"/>
+      <path d="M12 1.2 L12 4.8 M21.4 8.6 L18.1 10 M19 19.7 L16.4 16.9 M5 19.7 L7.6 16.9 M2.6 8.6 L5.9 10" stroke="#1a1611" stroke-width="1.1" fill="none"/>
+    </svg>
+  </div>
+  <div class="cat">
+    <svg width="86" height="52" viewBox="0 0 86 52" fill="#2a2620" xmlns="http://www.w3.org/2000/svg">
+      <path class="tail" d="M11 27 C1 21 2 7 13 8 C7 12 9 21 17 25 Z"/>
+      <ellipse cx="44" cy="30" rx="30" ry="13"/>
+      <circle cx="74" cy="21" r="9"/>
+      <path d="M67 13 L65 3 L74 11 Z"/>
+      <path d="M81 13 L83 3 L74 11 Z"/>
+      <rect class="leg legA" x="22" y="37" width="4.6" height="14" rx="2.3"/>
+      <rect class="leg legB" x="31" y="37" width="4.6" height="14" rx="2.3"/>
+      <rect class="leg legB" x="58" y="37" width="4.6" height="14" rx="2.3"/>
+      <rect class="leg legA" x="67" y="37" width="4.6" height="14" rx="2.3"/>
+    </svg>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lb-btn lb-close" id="lbClose" aria-label="Close">&times;</button>
